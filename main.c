@@ -7,41 +7,26 @@
 
 int main(int argc , char **argv) {
   NodePtr headPtr=NULL;
-   NodePtr tailPtr=NULL;
-/* For struct Queue*/
+  NodePtr tailPtr=NULL;
+
+  int i,d,price,n=0;
+
   Queue  q;
-  q. headPtr=NULL;
-  q.tailPtr=NULL;
-  q.size=0;
-  int i,x;
-  
-  // enqueue_struct(&q, 2);
-  // enqueue_struct(&q, 3);
-  // enqueue_struct(&q, 4);
-  // enqueue_struct(&q, 5);
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
-  // printf("%d\n", dequeue_struct(&q));
+   q.headPtr=NULL;
+   q.tailPtr=NULL;
+   q.size=0;
+
  for(i=1;i<argc;i++){
         if(strcmp(argv[i],"x")==0){
-            x=dequeue_struct(&q);
-            if (x != 0)
-              printf("dequeing %d\n",x);
-            else
-              printf("Empty queue\n");
+            d = dequeue_struct(&q,++n);
         }
         else {
-       enqueue_struct(&q, atoi(argv[i]));
-           
-        }
+        enqueue_struct(&q, atoi(argv[i]), atoi(argv[i+1]));
+        printf("   My order number is %d\n",atoi(argv[i]));
+        i++;
+        }   
  }
+        printf("==========================\n");
+        if(q.size>0){ printf("There are %d queue left\n",q.size); printf("==========================\n");}
   return 0;
 }
